@@ -6,6 +6,7 @@ import com.example.donkey_code_challenge.model.Hub
 import com.example.donkey_code_challenge.repositories.SearchRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,8 +20,8 @@ class SearchViewModel @Inject constructor(searchRepository: SearchRepository) : 
     private val _searchQuery = MutableStateFlow("")
     val searchQuery = _searchQuery.asStateFlow()
 
-    @OptIn(ExperimentalCoroutinesApi::class)
-    val searchResult = searchQuery.mapLatest {
+    @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
+    val searchResult = searchQuery.debounce(500).mapLatest {
         when (it) {
             "" -> listOf()
             else -> searchRepository.search(it)
