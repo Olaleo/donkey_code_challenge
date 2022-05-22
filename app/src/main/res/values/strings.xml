@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">donkey_code_challenge</string>
+    <string name="label_map_page_title">Map</string>
+    <string name="label_search_page_title">Search</string>
 </resources>
