@@ -3,7 +3,7 @@ package com.example.donkey_code_challenge.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.donkey_code_challenge.model.Hub
-import com.example.donkey_code_challenge.repositories.SearchRepository
+import com.example.donkey_code_challenge.repositories.HubRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchViewModel @Inject constructor(searchRepository: SearchRepository) : ViewModel() {
+class SearchViewModel @Inject constructor(hubRepository: HubRepository) : ViewModel() {
 
     private val _backNavigationEvent = MutableSharedFlow<Hub>()
     val backNavigationEvent = _backNavigationEvent.asSharedFlow()
@@ -24,7 +24,7 @@ class SearchViewModel @Inject constructor(searchRepository: SearchRepository) : 
     val searchResult = searchQuery.debounce(500).mapLatest {
         when (it) {
             "" -> listOf()
-            else -> searchRepository.search(it)
+            else -> hubRepository.search(it)
         }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, listOf())
 

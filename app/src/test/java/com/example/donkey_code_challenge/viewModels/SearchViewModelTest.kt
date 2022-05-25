@@ -3,7 +3,7 @@ package com.example.donkey_code_challenge.viewModels
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.donkey_code_challenge.MainCoroutineRule
 import com.example.donkey_code_challenge.model.Hub
-import com.example.donkey_code_challenge.repositories.SearchRepository
+import com.example.donkey_code_challenge.repositories.HubRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
@@ -34,7 +34,7 @@ class SearchViewModelTest {
     private lateinit var viewModel: SearchViewModel
 
     @MockK
-    private lateinit var repository: SearchRepository
+    private lateinit var repository: HubRepository
 
     @Before
     fun before() {

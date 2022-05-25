@@ -5,7 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Hub(
-    val id: Int,
+    val hub_type: String? = null,
+    val id: String,
     val name: String,
     val latitude: String,
     val longitude: String,
