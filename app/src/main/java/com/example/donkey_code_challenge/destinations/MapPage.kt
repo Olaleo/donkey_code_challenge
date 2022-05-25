@@ -9,7 +9,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.donkey_code_challenge.R
 import com.example.donkey_code_challenge.destinations.destinations.SearchPageDestination
 import com.example.donkey_code_challenge.model.Hub
 import com.ramcosta.composedestinations.annotation.Destination
@@ -49,7 +51,7 @@ fun MapPage(
                 .padding(horizontal = 30.dp)
                 .padding(bottom = 30.dp)
         ) {
-            Text(text = "Search")
+            Text(text = stringResource(R.string.button_search))
         }
     }
 }
